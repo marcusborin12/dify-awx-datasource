@@ -1,0 +1,73 @@
+identity:
+  author: marcus_borin
+  name: awx_datasource
+  label:
+    en_US: AWX Datasource
+    pt_BR: AWX Datasource
+    zh_Hans: AWX Datasource
+    ja_JP: AWX Datasource
+  description:
+    en_US: Connect to Ansible AWX/Tower to index job templates, workflow templates and job history.
+    pt_BR: Conecta ao Ansible AWX/Tower para indexar job templates, workflow templates e histórico de jobs.
+    zh_Hans: 连接到 Ansible AWX/Tower 以索引作业模板、工作流模板和作业历史记录。
+    ja_JP: Ansible AWX/Tower に接続してジョブテンプレート、ワークフローテンプレート、ジョブ履歴をインデックスします。
+  icon: icon.svg
+  tags:
+    - other
+provider_type: online_document
+credentials_schema:
+  - name: awx_url
+    type: text-input
+    required: true
+    label:
+      en_US: AWX Base URL
+      pt_BR: URL base do AWX
+      zh_Hans: AWX 基础 URL
+      ja_JP: AWX ベース URL
+    placeholder:
+      en_US: "https://awx.example.com"
+      pt_BR: "https://awx.example.com"
+      zh_Hans: "https://awx.example.com"
+      ja_JP: "https://awx.example.com"
+    help:
+      en_US: The base URL of your AWX or Ansible Tower instance (without trailing slash).
+      pt_BR: URL base da sua instância AWX ou Ansible Tower (sem barra no final).
+      zh_Hans: AWX 或 Ansible Tower 实例的基础 URL（不带尾部斜杠）。
+      ja_JP: AWX または Ansible Tower インスタンスのベース URL（末尾のスラッシュなし）。
+  - name: awx_token
+    type: secret-input
+    required: true
+    label:
+      en_US: AWX API Token
+      pt_BR: Token de API do AWX
+      zh_Hans: AWX API 令牌
+      ja_JP: AWX API トークン
+    placeholder:
+      en_US: "Paste your AWX API token here"
+      pt_BR: "Cole aqui o token de API do AWX"
+      zh_Hans: "在此粘贴您的 AWX API 令牌"
+      ja_JP: "AWX API トークンをここに貼り付けてください"
+    help:
+      en_US: AWX API token. Generate one in AWX → User Settings → Tokens → Add.
+      pt_BR: Token de API do AWX. Gere em AWX → Configurações do Usuário → Tokens → Adicionar.
+      zh_Hans: AWX API 令牌。在 AWX → 用户设置 → 令牌 → 添加 中生成。
+      ja_JP: AWX API トークン。AWX → ユーザー設定 → トークン → 追加 で生成します。
+  - name: ssl_verify
+    type: boolean
+    required: false
+    default: false
+    label:
+      en_US: Verify SSL Certificate
+      pt_BR: Verificar Certificado SSL
+      zh_Hans: 验证 SSL 证书
+      ja_JP: SSL 証明書を検証する
+    help:
+      en_US: Disable for self-signed or internal certificates.
+      pt_BR: Desabilite para certificados autoassinados ou internos.
+      zh_Hans: 对于自签名或内部证书请禁用。
+      ja_JP: 自己署名または内部証明書の場合は無効にしてください。
+datasources:
+  - datasources/awx_datasource.yaml
+extra:
+  python:
+    source: provider/awx_datasource.py

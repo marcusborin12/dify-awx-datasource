@@ -1,0 +1,37 @@
+version: 0.1.11
+type: plugin
+author: marcus_borin
+name: awx_datasource
+label:
+  en_US: AWX Datasource
+  pt_BR: AWX Datasource
+  zh_Hans: AWX Datasource
+  ja_JP: AWX Datasource
+description:
+  en_US: Connect to Ansible AWX/Tower to index job templates, workflow templates and job history into Dify's Knowledge Base.
+  pt_BR: Conecta ao Ansible AWX/Tower para indexar job templates, workflow templates e histórico de jobs na Knowledge Base do Dify.
+  zh_Hans: 连接到 Ansible AWX/Tower，将作业模板、工作流模板和作业历史记录索引到 Dify 知识库。
+  ja_JP: Ansible AWX/Tower に接続してジョブテンプレート、ワークフローテンプレート、ジョブ履歴を Dify ナレッジベースにインデックスします。
+icon: icon.svg
+repo: https://github.com/marcusborin12/dify-awx-datasource
+resource:
+  memory: 268435456
+  permission: {}
+plugins:
+  datasources:
+    - provider/awx_datasource.yaml
+meta:
+  version: 0.1.11
+  arch:
+    - amd64
+    - arm64
+  runner:
+    language: python
+    version: "3.12"
+    entrypoint: main
+  minimum_dify_version: 1.9.0
+created_at: 2026-07-10T00:00:00.000000+00:00
+privacy: PRIVACY.md
+verified: false
+tags:
+  - other

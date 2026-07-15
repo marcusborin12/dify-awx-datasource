@@ -1,0 +1,28 @@
+identity:
+  author: marcus_borin
+  name: awx_datasource
+  label:
+    en_US: AWX Automations & Job History
+    pt_BR: Automações e Histórico de Jobs AWX
+    zh_Hans: AWX 自动化与作业历史
+    ja_JP: AWX 自動化とジョブ履歴
+  description:
+    en_US: Browse and index AWX job templates, workflow templates and job history.
+    pt_BR: Navega e indexa job templates, workflow templates e histórico de jobs do AWX.
+    zh_Hans: 浏览和索引 AWX 作业模板、工作流模板和作业历史记录。
+    ja_JP: AWX のジョブテンプレート、ワークフローテンプレート、ジョブ履歴を参照してインデックスします。
+  icon: icon.svg
+description:
+  en_US: Browse and index AWX job templates, workflow templates and job history into the knowledge base.
+  pt_BR: Navega e indexa job templates, workflow templates e histórico de jobs do AWX na base de conhecimento.
+  zh_Hans: 浏览和索引 AWX 作业模板、工作流模板和作业历史记录到知识库。
+  ja_JP: AWX のジョブテンプレート、ワークフローテンプレート、ジョブ履歴をナレッジベースにインデックスします。
+output_schema:
+  type: object
+  properties:
+    content:
+      type: string
+      description: AWX resource content formatted as Markdown for knowledge base indexing.
+extra:
+  python:
+    source: datasources/awx_datasource.py
