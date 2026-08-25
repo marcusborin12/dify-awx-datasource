@@ -1,4 +1,4 @@
-version: 0.1.11
+version: 0.1.12
 type: plugin
 author: marcus_borin
 name: awx_datasource
@@ -21,7 +21,7 @@ plugins:
   datasources:
     - provider/awx_datasource.yaml
 meta:
-  version: 0.1.11
+  version: 0.1.12
   arch:
     - amd64
     - arm64
