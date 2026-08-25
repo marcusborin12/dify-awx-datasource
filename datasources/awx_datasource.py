@@ -77,6 +77,18 @@ class AwxDatasource(OnlineDocumentDatasource):
         return f"{m}m {s}s" if m else f"{s}s"
 
     @staticmethod
+    def _transition_ids(values: list[Any] | None) -> list[str]:
+        result = []
+        for value in values or []:
+            if isinstance(value, dict):
+                node_id = value.get("id")
+            else:
+                node_id = value
+            if node_id is not None:
+                result.append(str(node_id))
+        return result
+
+    @staticmethod
     def _status_emoji(status: str) -> str:
         return {
             "successful": "✅",
@@ -265,9 +277,9 @@ class AwxDatasource(OnlineDocumentDatasource):
             for node in nodes:
                 jt_name = node.get("summary_fields", {}).get("unified_job_template", {}).get("name", f"node_{node.get('id')}")
                 node_type = node.get("summary_fields", {}).get("unified_job_template", {}).get("unified_job_type", "")
-                success_nodes = [str(n.get("id")) for n in node.get("success_nodes", [])]
-                failure_nodes = [str(n.get("id")) for n in node.get("failure_nodes", [])]
-                always_nodes = [str(n.get("id")) for n in node.get("always_nodes", [])]
+                success_nodes = self._transition_ids(node.get("success_nodes"))
+                failure_nodes = self._transition_ids(node.get("failure_nodes"))
+                always_nodes = self._transition_ids(node.get("always_nodes"))
                 transitions = []
                 if success_nodes:
                     transitions.append(f"✅→ nós {', '.join(success_nodes)}")
